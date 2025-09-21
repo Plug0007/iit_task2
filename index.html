@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Techfest IIT Bombay — College Ambassador Program</title>
+  <meta name="description" content="Join the Techfest IIT Bombay College Ambassador (CA) Program — represent Techfest at your college, complete tasks, and earn special access." />
+  <meta name="keywords" content="Techfest, IIT Bombay, College Ambassador, CA Program, Techfest 2025, Campus Ambassador" />
+  <meta name="author" content="Raelyaan" />
+
+  <!-- GSAP CDN -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+
+  <style>
+    /* keep your existing CSS — unchanged */
+    /* ... your CSS from Task 1 here ... */
+
+    /* Button pulse (GSAP fallback in CSS too) */
+    .btn-primary {
+      position: relative;
+      overflow: hidden;
+    }
+    .btn-primary::after {
+      content:"";
+      position:absolute;
+      inset:0;
+      border-radius:inherit;
+      box-shadow:0 0 0 0 rgba(0,207,255,.6);
+      opacity:0;
+      transition:opacity .3s;
+    }
+    .btn-primary:hover::after {
+      animation:pulse 1.6s infinite;
+      opacity:1;
+    }
+    @keyframes pulse {
+      0% { box-shadow:0 0 0 0 rgba(0,207,255,.6) }
+      70% { box-shadow:0 0 0 14px rgba(0,207,255,0) }
+      100% { box-shadow:0 0 0 0 rgba(0,207,255,0) }
+    }
+
+    section.content, aside.stage, footer {
+      opacity: 0; /* for scroll fade-ins */
+    }
+  </style>
+</head>
+<body>
+  <main class="hero-card" role="main" aria-labelledby="hero-title">
+    <section class="content">
+      <div class="meta-row">
+        <div class="badge">Techfest'25 • College Ambassador</div>
+        <div class="sub-meta">Represent IIT Bombay • Spread the fest at your campus</div>
+      </div>
+
+      <h1 id="hero-title">Be the Face of Techfest at Your College</h1>
+
+      <p>Join the Techfest IIT Bombay College Ambassador (CA) Program — lead your campus outreach, complete curated tasks, and unlock exclusive access to Techfest events, swag, and networking opportunities.</p>
+
+      <div class="cta-row" role="group" aria-label="Primary actions">
+        <a class="btn btn-primary" href="#" role="button" aria-label="Register as College Ambassador">Register as CA</a>
+        <a class="btn btn-ghost" href="https://techfest.org" target="_blank" rel="noopener">Learn more</a>
+      </div>
+    </section>
+
+    <aside class="stage" aria-hidden="true">
+      <div class="blob" aria-hidden="true"></div>
+      <div class="bubble b1" aria-hidden="true"></div>
+      <div class="bubble b2" aria-hidden="true"></div>
+      <div class="bubble b3" aria-hidden="true"></div>
+
+      <div class="device" role="img" aria-label="Techfest preview">
+        <div class="screen">
+          <div style="font-size:18px">Techfest IIT Bombay</div>
+          <div style="font-size:12px;opacity:.9;margin-top:8px">College Ambassador Program</div>
+        </div>
+      </div>
+    </aside>
+  </main>
+
+  <footer>
+    Made with ❤️ by Raelyaan • For Techfest IIT Bombay CA Program
+  </footer>
+
+  <script>
+    // GSAP animations
+    gsap.registerPlugin(ScrollTrigger);
+
+    // Hero content slide-in
+    gsap.from(".content", {
+      x: -80,
+      opacity: 0,
+      duration: 1.2,
+      ease: "power3.out"
+    });
+
+    // Device stage slide-in
+    gsap.from(".stage", {
+      x: 80,
+      opacity: 0,
+      duration: 1.2,
+      delay: 0.3,
+      ease: "power3.out"
+    });
+
+    // Footer fade-in on scroll
+    gsap.to("footer", {
+      opacity: 1,
+      duration: 1,
+      scrollTrigger: {
+        trigger: "footer",
+        start: "top 90%"
+      }
+    });
+
+    // Scroll-triggered fade-ins for content & stage
+    gsap.to(".content, .stage", {
+      opacity: 1,
+      duration: 1.2,
+      scrollTrigger: {
+        trigger: ".hero-card",
+        start: "top 80%"
+      }
+    });
+  </script>
+</body>
+</html>
